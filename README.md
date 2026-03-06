@@ -25,6 +25,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 输出 | 原样透传 或 静默阻断下游 |
 | 特性 | 节点颜色随状态实时变化（绿=通过，红=阻断） |
 
+![阻断器](assets/blocker.png)
+
 ---
 
 ### 2. 👁️ 预览任意类型（Preview Type）
@@ -36,6 +38,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 输入 | 任意类型 |
 | 输出 | 无（纯预览节点） |
 | 特性 | 彩色图标 + 类型名 + 详情，支持 IMAGE/MASK/LATENT/STRING/INT/FLOAT/BOOLEAN/CONDITIONING/DICT 及列表 |
+
+![预览任意类型](assets/preview_type.png)
 
 ---
 
@@ -50,6 +54,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 条件 | `A==B` `A!=B` `A>B` `A<B` `A>=B` `A<=B` `A包含B` `A为空` `A不为空` `A为真` `A为假` `长度==B` `长度>B` `长度<B` |
 | 特性 | 节点颜色随判断结果变化（绿=真，红=假） |
 
+![判断器](assets/judge.png)
+
 ---
 
 ### 4. 🔀 条件切换（Switch）
@@ -61,6 +67,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 输入 | 真（任意类型）+ 假（任意类型）+ 布尔条件 |
 | 输出 | 条件为真输出"真"端，为假输出"假"端 |
 | 特性 | 节点颜色随条件变化，实现 if/else 二选一 |
+
+![条件切换](assets/switch.png)
 
 ---
 
@@ -74,6 +82,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 输出 | 被选中的输入值，标签显示当前类型 |
 | 特性 | 动态端口（连满自动加一个，断开自动收回，最少2个），选中端口标记 ▶，输出标签显示来源类型 |
 
+![切换器](assets/switcher.png)
+
 ---
 
 ### 6. 🖥️ 通用预览（Universal Preview）
@@ -85,6 +95,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 输入 | 任意类型 |
 | 输出 | 无（纯预览节点） |
 | 特性 | 图片/遮罩直接显示，音频内置播放器可直接试听，文本/数字/布尔/列表/字典等格式化文本显示，Latent 显示尺寸信息 |
+
+![通用预览](assets/preview.png)
 
 ---
 
@@ -99,6 +111,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 支持类型 | IMAGE/MASK（batch 维拼接，自动填充对齐不同尺寸）、LATENT（samples 拼接）、AUDIO（首尾拼接成一段，自动重采样+通道对齐）、LIST（顺序合并） |
 | 特性 | 动态端口，执行后标题显示结果类型和详情（如 `AUDIO 6.28s 44100Hz`） |
 
+![组合任意批次](assets/batch_combiner.png)
+
 ---
 
 ### 8. ⚙️ 批处理器（Batch Processor）
@@ -110,6 +124,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 输入 | 总次数（INT）+ 任意（可选透传） |
 | 输出 | 任意（透传）、索引（当前第几次）、总次数、剩余次数 |
 | 特性 | 执行后自动入队下一次，进度条实时显示，完成后自动停止，下次手动执行自动归零 |
+
+![批处理器](assets/batch_processor.png)
 
 ---
 
@@ -124,6 +140,8 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 | 模式 | 随机整数（自定义范围）、随机浮点数（自定义范围，6位小数）、随机种子（0~2⁶⁴）、随机布尔（True/False） |
 | 特性 | 每次执行都生成新值，模式切换时自动显隐无关参数，标题实时显示生成结果 |
 
+![随机工具](assets/random_tool.png)
+
 ---
 
 ## 目录结构
@@ -132,17 +150,19 @@ git clone https://github.com/playboy-dongan/ComfyUI-Logic.git
 ComfyUI-Logic/
 ├── __init__.py
 ├── README.md
+├── pyproject.toml
+├── assets/                  # 截图示例
 ├── nodes/
 │   ├── __init__.py
-│   ├── blocker.py          # 阻断器
-│   ├── preview_any.py      # 预览任意类型
-│   ├── judge.py            # 判断器
-│   ├── switch.py           # 条件切换
-│   ├── switcher.py         # 切换器
-│   ├── preview.py          # 通用预览
-│   ├── batch_combiner.py   # 组合任意批次
-│   ├── looper.py           # 批处理器
-│   └── random_tool.py      # 随机工具
+│   ├── blocker.py           # 阻断器
+│   ├── preview_any.py       # 预览任意类型
+│   ├── judge.py             # 判断器
+│   ├── switch.py            # 条件切换
+│   ├── switcher.py          # 切换器
+│   ├── preview.py           # 通用预览
+│   ├── batch_combiner.py    # 组合任意批次
+│   ├── looper.py            # 批处理器
+│   └── random_tool.py       # 随机工具
 └── web/
     └── js/
         ├── blocker_visual.js
